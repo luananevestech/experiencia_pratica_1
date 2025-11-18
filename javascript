@@ -1,20 +1,19 @@
-// Função genérica para aplicar máscaras
 function applyMask(input, mask, event) {
-    if (event.inputType === 'deleteContentBackward') return; // Ignora o backspace
+    if (event.inputType === 'deleteContentBackward') return; 
     
-    let value = input.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    let value = input.value.replace(/\D/g, ''); 
     let maskedValue = '';
     let k = 0;
 
-    // Itera sobre a máscara
+  
     for (let i = 0; i < mask.length; i++) {
         if (k >= value.length) break;
         
-        if (mask[i] === '9') { // '9' representa um dígito
+        if (mask[i] === '9') {
             maskedValue += value[k];
             k++;
         } else {
-            maskedValue += mask[i]; // Caractere fixo
+            maskedValue += mask[i]; 
         }
     }
     input.value = maskedValue;
